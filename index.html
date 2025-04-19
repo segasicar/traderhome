@@ -163,12 +163,51 @@
     .cta button:hover {
       background-color: #00cc66;
     }
+  
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 15px 20px;
+      }
+      nav .logo {
+        font-size: 1.3rem;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        background-color: var(--nav-bg);
+        border-top: 1px solid #333;
+        padding: 10px 0;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      nav ul li {
+        text-align: center;
+        padding: 8px 0;
+      }
+      .menu-toggle {
+        display: inline-block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <nav>
     <div class="logo"><span class="logo-icon"></span><span style="display:inline-block; vertical-align:middle;">TraderHome</span></div>
-    <ul>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button><ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#setups">Setups</a></li>
       <li><a href="#community">Community</a></li>
@@ -230,6 +269,12 @@
         document.querySelector('.mode-toggle').innerText = '☀️';
       }
     };
+  </script>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('nav ul').classList.toggle('show');
+    }
   </script>
 </body>
 </html>
