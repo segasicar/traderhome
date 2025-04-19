@@ -202,7 +202,62 @@
     .menu-toggle {
       display: none;
     }
-  </style>
+  
+  @media (max-width: 768px) {
+    nav {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 15px 20px;
+    }
+    nav .logo {
+      font-size: 1.4rem;
+    }
+    nav ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+      background-color: var(--nav-bg);
+      border-top: 1px solid #333;
+      padding: 10px 0;
+    }
+    nav ul.show {
+      display: flex;
+    }
+    nav ul li {
+      text-align: center;
+      padding: 12px 0;
+    }
+    nav ul li a {
+      font-size: 1.1rem;
+    }
+    .menu-toggle {
+      display: inline-block;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      margin-left: auto;
+    }
+    h1 {
+      font-size: 2.2rem;
+    }
+    .tagline {
+      font-size: 1rem;
+    }
+    .feature-title {
+      font-size: 1.2rem;
+    }
+    .cta button {
+      font-size: 1.1rem;
+      padding: 16px 36px;
+    }
+  }
+  .menu-toggle {
+    display: none;
+  }
+</style>
 </head>
 <body>
   <nav>
