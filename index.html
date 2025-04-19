@@ -165,53 +165,20 @@
       background-color: #00cc66;
     }
   
-    @media (max-width: 768px) {
-      nav {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 15px 20px;
-      }
-      nav .logo {
-        font-size: 1.3rem;
-      }
-      nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-        background-color: var(--nav-bg);
-        border-top: 1px solid #333;
-        padding: 10px 0;
-      }
-      nav ul.show {
-        display: flex;
-      }
-      nav ul li {
-        text-align: center;
-        padding: 8px 0;
-      }
-      .menu-toggle {
-        display: inline-block;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        color: var(--text-color);
-        cursor: pointer;
-      }
-    }
-
-    .menu-toggle {
-      display: none;
-    }
-  
   @media (max-width: 768px) {
     nav {
       flex-wrap: wrap;
       justify-content: space-between;
       padding: 15px 20px;
     }
-    nav .logo {
-      font-size: 1.4rem;
+    .menu-toggle {
+      display: inline-block;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      margin-left: auto;
     }
     nav ul {
       display: none;
@@ -232,14 +199,8 @@
     nav ul li a {
       font-size: 1.1rem;
     }
-    .menu-toggle {
-      display: inline-block;
-      font-size: 1.8rem;
-      background: none;
-      border: none;
-      color: var(--text-color);
-      cursor: pointer;
-      margin-left: auto;
+    nav ul li button.mode-toggle {
+      margin: 0 auto;
     }
     h1 {
       font-size: 2.2rem;
@@ -255,6 +216,7 @@
       padding: 16px 36px;
     }
   }
+
   .menu-toggle {
     display: none;
   }
@@ -262,7 +224,7 @@
 </head>
 <body>
   <nav>
-    <div class="logo"><span class="logo-icon"></span><span style="display:inline-block; vertical-align:middle;">TraderHome</span></div>
+    <div class="logo"><span class="logo-icon"></span><span style="position:relative; top:-5px;">TraderHome</span></div>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button><ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#setups">Setups</a></li>
@@ -331,6 +293,27 @@
     function toggleMenu() {
       document.querySelector('nav ul').classList.toggle('show');
     }
+    function toggleMode() {
+      const body = document.body;
+      const current = body.classList.contains('light');
+      if (current) {
+        body.classList.remove('light');
+        localStorage.setItem('mode', 'dark');
+        document.querySelector('.mode-toggle').innerText = '🌙';
+      } else {
+        body.classList.add('light');
+        localStorage.setItem('mode', 'light');
+        document.querySelector('.mode-toggle').innerText = '☀️';
+      }
+    }
+
+    window.onload = () => {
+      const savedMode = localStorage.getItem('mode');
+      if (savedMode === 'light') {
+        document.body.classList.add('light');
+        document.querySelector('.mode-toggle').innerText = '☀️';
+      }
+    };
   </script>
 </body>
 </html>
